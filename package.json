@@ -13,7 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "machine": "^3.0.0"
+    "machine": "^3.0.0",
+    "machinepack-http": "^2.0.1"
   },
   "devDependencies": {
     "test-machinepack-mocha": "^0.2.2"
@@ -22,7 +23,7 @@
     "friendlyName": "Steam",
     "machineDir": "machines/",
     "machines": [
-      "get-steam-news"
+      "get-news-for-app"
     ]
   }
 }
