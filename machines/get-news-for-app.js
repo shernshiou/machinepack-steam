@@ -37,7 +37,7 @@ module.exports = {
 
       example:  {
         appnews: {
-          appid: 440,
+          appid: 400,
           newsitems: [
           ]
         }
