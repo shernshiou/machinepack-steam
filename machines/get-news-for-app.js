@@ -33,20 +33,19 @@ module.exports = {
 
     success: {
 
-      description: '',
+      description: 'Done.',
 
       example:  {
         appnews: {
           appid: 400,
-          newsitems: [
-          ]
+          newsitems: []
         }
       }
     }
 
   },
 
-  fn: function (inputs,exits) {
+  fn: function (inputs, exits) {
 
     var Http = require('machinepack-http');
 
@@ -67,7 +66,6 @@ module.exports = {
         console.log(JSON.stringify(response));
         return exits.success(response);
       },
-
       error: function (err) {
         return exits.error(err);
       }
