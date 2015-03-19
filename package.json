@@ -1,6 +1,6 @@
 {
   "name": "machinepack-steam",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Communicate with Steam Web API to query Steam information.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
