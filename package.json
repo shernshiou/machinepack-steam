@@ -23,7 +23,8 @@
     "friendlyName": "Steam",
     "machineDir": "machines/",
     "machines": [
-      "get-news-for-app"
+      "get-news-for-app",
+      "get-global-achievement-percentage-for-app"
     ]
   }
 }
