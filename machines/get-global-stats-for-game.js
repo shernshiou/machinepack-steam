@@ -12,11 +12,6 @@ module.exports = {
       example: 400,
       required: true
     },
-    count: {
-      description: 'Length of the array of global stat names you will be passing.',
-      example: 1,
-      required: true
-    },
     name: {
       description: 'Name of the achievement as defined in Steamworks.',
       example: ['global.map.emp_isle'],
@@ -50,7 +45,7 @@ module.exports = {
 
     var params = {
       appid: inputs.appid,
-      count: inputs.count,
+      count: inputs.name.length,
       format: 'json'
     };
 
@@ -63,7 +58,6 @@ module.exports = {
       baseUrl: 'http://api.steampowered.com/',
       url: 'ISteamUserStats/GetGlobalStatsForGame/v0001/',
       method: 'get',
-      count: inputs.count,
       params: params
     })
     .exec({
