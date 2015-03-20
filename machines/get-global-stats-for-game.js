@@ -1,29 +1,29 @@
 module.exports = {
 
-  friendlyName: 'Get News for Steam app',
+  friendlyName: 'Get global stats for game',
 
-  description: 'Fetch news feeds for each Steam game',
+  description: 'Returns on global statistics of a specific game',
 
   extendedDescription: '',
 
   inputs: {
     appid: {
-      description: 'AppID of the game you want the news of.',
+      description: 'AppID of the game you want the percentages of.',
       example: 400,
       required: true
     },
     count: {
-      description: 'How many news entries you want to get returned.',
-      example: 3
+      description: 'Length of the array of global stat names you will be passing.',
+      example: 1
     },
-    maxlength: {
-      description: 'Maximum length of each news entry.',
-      example: 300
+    name: {
+      description: 'Name of the achievement as defined in Steamworks.',
+      example: ['global.map.emp_isle'],
+      required: true
     }
   },
 
   defaultExit: 'success',
-
 
   exits: {
 
@@ -32,16 +32,14 @@ module.exports = {
     },
 
     success: {
-
       description: 'Done.',
-
-      example:  {
-        appnews: {
-          appid: 400,
-          newsitems: []
+      example: {
+        response: {
+          globalstats: { },
+          result: 1
         }
       }
-    }
+    },
 
   },
 
@@ -51,12 +49,12 @@ module.exports = {
 
     Http.sendHttpRequest({
       baseUrl: 'http://api.steampowered.com/',
-      url: 'ISteamNews/GetNewsForApp/v0002/',
+      url: 'ISteamUserStats/GetGlobalStatsForGame/v0001/',
       method: 'get',
       params: {
         appid: inputs.appid,
         count: inputs.count,
-        maxlength: inputs.maxlength,
+        name: inputs.name,
         format: 'json'
       }
     })

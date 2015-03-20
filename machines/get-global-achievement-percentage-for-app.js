@@ -45,7 +45,8 @@ module.exports = {
         gameid: inputs.gameid,
         format: 'json'
       }
-    }).exec({
+    })
+    .exec({
       success: function (res) {
         var response = JSON.parse(res.body);
         console.log(response);
