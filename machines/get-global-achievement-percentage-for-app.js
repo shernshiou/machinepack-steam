@@ -49,8 +49,6 @@ module.exports = {
     .exec({
       success: function (res) {
         var response = JSON.parse(res.body);
-        console.log(response);
-        console.log(JSON.stringify(response));
         return exits.success(response);
       },
       error: function (err) {

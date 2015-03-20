@@ -14,7 +14,8 @@ module.exports = {
     },
     count: {
       description: 'Length of the array of global stat names you will be passing.',
-      example: 1
+      example: 1,
+      required: true
     },
     name: {
       description: 'Name of the achievement as defined in Steamworks.',
@@ -47,22 +48,27 @@ module.exports = {
 
     var Http = require('machinepack-http');
 
+    var params = {
+      appid: inputs.appid,
+      count: inputs.count,
+      format: 'json'
+    };
+
+    inputs.name.forEach(function (val, idx) {
+      var key = 'name[' + idx + ']';
+      params[key] = val;
+    });
+
     Http.sendHttpRequest({
       baseUrl: 'http://api.steampowered.com/',
       url: 'ISteamUserStats/GetGlobalStatsForGame/v0001/',
       method: 'get',
-      params: {
-        appid: inputs.appid,
-        count: inputs.count,
-        name: inputs.name,
-        format: 'json'
-      }
+      count: inputs.count,
+      params: params
     })
     .exec({
       success: function (res) {
         var response = JSON.parse(res.body);
-        console.log(response);
-        console.log(JSON.stringify(response));
         return exits.success(response);
       },
       error: function (err) {
