@@ -1,6 +1,6 @@
 {
   "name": "machinepack-steam",
-  "version": "0.1.2a",
+  "version": "0.1.3",
   "description": "Communicate with Steam Web API to query Steam information.",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
@@ -25,7 +25,8 @@
     "machines": [
       "get-news-for-app",
       "get-global-achievement-percentage-for-app",
-      "get-global-stats-for-game"
+      "get-global-stats-for-game",
+      "get-player-summaries"
     ]
   }
 }

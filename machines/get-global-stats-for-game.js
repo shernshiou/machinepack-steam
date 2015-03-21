@@ -14,7 +14,7 @@ module.exports = {
     },
     name: {
       description: 'Name of the achievement as defined in Steamworks.',
-      example: ['global.map.emp_isle'],
+      example: [ 'global.map.emp_isle' ],
       required: true
     }
   },
@@ -30,10 +30,8 @@ module.exports = {
     success: {
       description: 'Done.',
       example: {
-        response: {
-          globalstats: { },
-          result: 1
-        }
+        globalstats: { },
+        result: 1
       }
     },
 
@@ -62,7 +60,7 @@ module.exports = {
     })
     .exec({
       success: function (res) {
-        var response = JSON.parse(res.body);
+        var response = JSON.parse(res.body).response;
         return exits.success(response);
       },
       error: function (err) {
