@@ -26,7 +26,8 @@
       "get-news-for-app",
       "get-global-achievement-percentage-for-app",
       "get-global-stats-for-game",
-      "get-player-summaries"
+      "get-player-summaries",
+      "get-friend-list"
     ]
   }
 }

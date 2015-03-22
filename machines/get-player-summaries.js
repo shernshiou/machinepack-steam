@@ -80,7 +80,7 @@ module.exports = {
       error: function (err) {
         return exits.error(err);
       }
-    })
+    });
 
   },
 
