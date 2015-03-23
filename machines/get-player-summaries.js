@@ -12,6 +12,7 @@ module.exports = {
       required: true
     },
     key: {
+      description: 'Steam API Key',
       example: 'XXXXXXXXXXXXXXXXXXXXXXX',
       required: true,
       whereToGet: {
@@ -69,7 +70,8 @@ module.exports = {
       method: 'get',
       params: {
         steamids: inputs.steamids.join(),
-        key: inputs.key
+        key: inputs.key,
+        format: 'json'
       }
     })
     .exec({

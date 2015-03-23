@@ -1,14 +1,14 @@
 module.exports = {
 
-  friendlyName: 'Get friend list',
+  friendlyName: 'Get player achievements',
 
-  description: 'Returns the friend list of any Steam user, provided his Steam Community profile visibility is set to "Public".',
+  description: 'Returns a list of achievements for this user by app id',
 
   extendedDescription: '',
 
   inputs: {
     steamid: {
-      description: '64 bit Steam ID to return friend list for.',
+      description: '64 bit Steam ID to return achievements for.',
       example: '76561197960435530',
       required: true
     },
@@ -22,9 +22,14 @@ module.exports = {
         extendedDescription: ''
       }
     },
-    relationship: {
-      description: 'Relationship filter. Possibles values: all, friend.',
-      example: 'friend'
+    appid: {
+      description: 'The ID for the game you\'re requesting.',
+      example: 400,
+      required: true
+    },
+    l: {
+      description: 'Language. If specified, it will return language data for the requested language.',
+      example: 'en_US'
     }
   },
 
@@ -33,20 +38,22 @@ module.exports = {
   exits: {
 
     error: {
-      description: 'Unexpected error occurred.',
+      description: 'Unexpected error occurred.'
     },
 
     success: {
       description: 'Done.',
       example: {
-        friendslist: {
-          friends: [
+        playerstats: {
+          steamID: "76561197972495328",
+          gameName: "Team Fortress 2",
+          achievements: [
             {
-              steamid: "76561197960265731",
-              relationship: "friend",
-              friend_since: 0
+              apiname: "TF_PLAY_GAME_EVERYCLASS",
+              achieved: 1
             }
-          ]
+          ],
+          success: true
         }
       }
     }
@@ -59,12 +66,13 @@ module.exports = {
 
     Http.sendHttpRequest({
       baseUrl: 'http://api.steampowered.com/',
-      url: 'ISteamUser/GetFriendList/v0001/',
+      url: 'ISteamUserStats/GetPlayerAchievements/v0001/',
       method: 'get',
       params: {
         steamid: inputs.steamid,
         key: inputs.key,
-        relationship: inputs.relationship,
+        appid: inputs.appid,
+        l: inputs.l,
         format: 'json'
       }
     })
