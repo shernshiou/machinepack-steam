@@ -28,7 +28,8 @@
       "get-global-stats-for-game",
       "get-player-summaries",
       "get-friend-list",
-      "get-player-achievements"
+      "get-player-achievements",
+      "get-owned-games"
     ]
   }
 }
