@@ -8,6 +8,7 @@ module.exports = {
 
   inputs: {
     steamids: {
+      description: 'Array of SteamIDs',
       example: [ '76561197960435530' ],
       required: true
     },

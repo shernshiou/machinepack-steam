@@ -29,7 +29,8 @@
       "get-player-summaries",
       "get-friend-list",
       "get-player-achievements",
-      "get-owned-games"
+      "get-owned-games",
+      "get-recently-played-games"
     ]
   }
 }
