@@ -30,7 +30,8 @@
       "get-friend-list",
       "get-player-achievements",
       "get-owned-games",
-      "get-recently-played-games"
+      "get-recently-played-games",
+      "is-playing-shared-game"
     ]
   }
 }
