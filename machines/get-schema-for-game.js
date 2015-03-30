@@ -1,15 +1,15 @@
 module.exports = {
 
-  friendlyName: 'Is playing shared game',
+  friendlyName: 'Get schema for game',
 
-  description: 'IsPlayingSharedGame returns the original owner\'s SteamID if a borrowing account is currently playing this game. If the game is not borrowed or the borrower currently doesn\'t play this game, the result is always 0.',
+  description: 'GetSchemaForGame returns gamename, gameversion and availablegamestats(achievements and stats).',
 
   extendedDescription: '',
 
   inputs: {
-    steamid: {
-      description: 'The SteamID of the account playing.',
-      example: '76561197960435530',
+    appid: {
+      description: 'The AppID of the game you want stats of',
+      example: '620',
       required: true
     },
     key: {
@@ -21,10 +21,6 @@ module.exports = {
         description: 'Copy and paste an API key, or create one if you haven\'t already.',
         extendedDescription: ''
       }
-    },
-    appid_playing: {
-      description: 'The AppID of the game currently playing.',
-      example: "240"
     }
   },
 
@@ -33,13 +29,20 @@ module.exports = {
   exits: {
 
     error: {
-      description: 'Unexpected error occurred.',
+      description: 'Unexpected error occurred.'
     },
 
     success: {
       description: 'Done.',
-      example : {
-        lender_steamid: '0'
+      example: {
+        game: {
+          gameName: "Portal 2",
+          gameVersion: "1108170002",
+          availableGameStats: {
+            achievements: [],
+            stats: []
+          }
+        }
       }
     },
 
@@ -50,18 +53,17 @@ module.exports = {
 
     Http.sendHttpRequest({
       baseUrl: 'http://api.steampowered.com/',
-      url: 'IPlayerService/IsPlayingSharedGame/v0001/',
+      url: 'ISteamUserStats/GetSchemaForGame/v2/',
       method: 'get',
       params: {
-        steamid: inputs.steamid,
+        appid: inputs.appid,
         key: inputs.key,
-        appid_playing: inputs.appid_playing,
         format: 'json'
       }
     })
     .exec({
       success: function (res) {
-        var response = JSON.parse(res.body).response;
+        var response = JSON.parse(res.body);
         return exits.success(response);
       },
       error: function (err) {
@@ -69,7 +71,5 @@ module.exports = {
       }
     });
   }
-
-
 
 };

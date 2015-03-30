@@ -31,7 +31,8 @@
       "get-player-achievements",
       "get-owned-games",
       "get-recently-played-games",
-      "is-playing-shared-game"
+      "is-playing-shared-game",
+      "get-schema-for-game"
     ]
   }
 }
