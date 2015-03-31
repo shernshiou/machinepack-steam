@@ -32,7 +32,8 @@
       "get-owned-games",
       "get-recently-played-games",
       "is-playing-shared-game",
-      "get-schema-for-game"
+      "get-schema-for-game",
+      "get-player-bans"
     ]
   }
 }
